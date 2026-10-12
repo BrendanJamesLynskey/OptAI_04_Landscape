@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optical Technology for AI Processing 04 — The Public Landscape</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Geist+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1c1815;
+            --bg-card: #231e1a;
+            --bg-code: #2b2520;
+            --text-primary: #efe8dc;
+            --text-secondary: #a2978b;
+            --accent: #aabd59;
+            --accent-dim: #aabd5944;
+            --accent-glow: #aabd5933;
+            --border: #3a322b;
+            --font-display: 'Bricolage Grotesque', sans-serif;
+            --font-mono: 'Geist Mono', 'Geist Mono', monospace;
+            --font-body: 'Instrument Sans', sans-serif;
+            --max-width: 900px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 17px;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ── Header ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .series-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* ── Tag Pills ── */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+            white-space: nowrap;
+        }
+
+        /* ── Pipeline Flow Bar ── */
+        .pipeline {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+            max-width: var(--max-width);
+        }
+
+        .pipeline-step {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.3rem 0.7rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .pipeline-arrow {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* ── Slides ── */
+        .slide {
+            min-height: 100vh;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-number {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--accent-dim);
+            position: absolute;
+            top: 2rem;
+            right: 1.5rem;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .slide h2 {
+            font-family: var(--font-display);
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+        }
+
+        .slide h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .slide p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .slide p strong {
+            color: var(--text-primary);
+        }
+
+        .slide ul, .slide ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .slide li {
+            margin-bottom: 0.4rem;
+        }
+
+        .slide li strong {
+            color: var(--text-primary);
+        }
+
+        /* ── Code Blocks ── */
+        .code-block {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin: 1.25rem 0;
+            overflow: hidden;
+        }
+
+        .code-header {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            background: rgba(170,189,89,0.08);
+            padding: 0.4rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #dad1c5;
+        }
+
+        /* Syntax highlighting (manual) */
+        .kw { color: #de805a; }
+        .fn { color: #d7bbdf; }
+        .str { color: #bcdbd4; }
+        .cm { color: #a2978b; font-style: italic; }
+        .num { color: #97cdc6; }
+        .type { color: #e3b174; }
+        .dir { color: #de805a; }
+        .mac { color: #e3b174; }
+
+        /* ── Tables ── */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.25rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: var(--bg-code);
+            color: var(--accent);
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-family: var(--font-display);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(35,30,26,0.5);
+        }
+
+        /* ── Diagrams ── */
+        .diagram-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .diagram-box {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .diagram-box.accent {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(170,189,89,0.08);
+        }
+
+        .diagram-box.dim {
+            color: var(--text-secondary);
+            border-color: var(--border);
+        }
+
+        .diagram-arrow {
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Vertical flow diagrams */
+        .diagram-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .diagram-vertical .diagram-arrow {
+            font-size: 1.1rem;
+        }
+
+        /* Nested hierarchy diagram */
+        .hierarchy {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .hierarchy-level {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hierarchy-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .hierarchy-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .hierarchy-item {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .hierarchy-item.accent {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(170,189,89,0.08);
+        }
+
+        /* Grid diagram */
+        .diagram-grid {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .diagram-grid.cols-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .diagram-grid.cols-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .diagram-panel {
+            padding: 1rem;
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        .diagram-panel.accent-border {
+            border-left: 3px solid var(--accent);
+        }
+
+        .diagram-panel h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .diagram-panel p, .diagram-panel ul {
+            font-size: 0.85rem;
+        }
+
+        /* ── Callout Boxes ── */
+        .callout {
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+        }
+
+        .callout .callout-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ── Tier Visual ── */
+        .tier-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .tier-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .tier-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            min-width: 90px;
+            text-align: right;
+        }
+
+        .tier-fill {
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding: 0 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            white-space: nowrap;
+            transition: width 0.6s ease;
+        }
+
+        .tier-cost {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            min-width: 70px;
+        }
+
+        /* ── Contents list ── */
+        .contents-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: contents;
+        }
+
+        .contents-list li {
+            counter-increment: contents;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contents-list li:last-child {
+            border-bottom: none;
+        }
+
+        .contents-list li::before {
+            content: counter(contents, decimal-leading-zero);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            min-width: 2rem;
+        }
+
+        .contents-list a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contents-list a:hover {
+            color: var(--accent);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .slide {
+                padding: 3rem 1rem;
+                min-height: auto;
+            }
+
+            .slide-number {
+                font-size: 3rem;
+                top: 1.5rem;
+                right: 1rem;
+            }
+
+            .slide h2 {
+                font-size: 1.5rem;
+            }
+
+            .diagram-grid.cols-2,
+            .diagram-grid.cols-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .pipeline {
+                gap: 0.15rem;
+            }
+
+            .pipeline-step {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            table {
+                font-size: 0.78rem;
+            }
+
+            .tier-label {
+                min-width: 60px;
+                font-size: 0.65rem;
+            }
+
+            .tier-fill {
+                font-size: 0.6rem;
+                height: 26px;
+            }
+        }
+
+        /* ── Interactive controls (added for Local LLM series) ── */
+        .control-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+        }
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .control-row label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            min-width: 180px;
+        }
+        .control-row input[type="range"] {
+            flex: 1;
+            min-width: 160px;
+            accent-color: var(--accent);
+        }
+        .control-row input[type="number"],
+        .control-row select {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            border-radius: 4px;
+            padding: 0.3rem 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+        .control-row .val {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            min-width: 80px;
+            text-align: right;
+        }
+        .btn {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 0.4rem 0.9rem;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+        .btn:hover { background: rgba(170,189,89,0.2); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn.secondary {
+            background: var(--bg-code);
+            color: var(--text-secondary);
+            border-color: var(--border);
+        }
+        .result-box {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            margin-top: 0.75rem;
+        }
+        .result-box .line-label { color: var(--text-secondary); }
+        .result-box .line-val   { color: var(--accent); font-weight: 600; }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .metric {
+            background: var(--bg-code);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            text-align: center;
+        }
+        .metric .metric-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .metric .metric-value {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+
+        /* Canvas / SVG containers */
+        .canvas-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.25rem 0;
+            overflow-x: auto;
+        }
+        .canvas-wrap canvas,
+        .canvas-wrap svg {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        /* Small inline badge */
+        .badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 0.1rem 0.45rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            vertical-align: middle;
+            margin-left: 0.3rem;
+        }
+        .badge.ok    { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+        .badge.warn  { border-color: #e3b174; color: #e3b174; background: rgba(227,177,116,0.08); }
+        .badge.bad   { border-color: #de805a; color: #de805a; background: rgba(222,128,90,0.08); }
+
+
+        /* ── LLM Inference Simulators additions ── */
+        .canvas-wrap canvas { image-rendering: auto; display: block; width: 100%; height: auto; }
+        .canvas-wrap svg { max-width: 100%; height: auto; }
+        .ladder { display: grid; gap: 0.4rem; margin: 1.25rem 0; }
+        .ladder-row {
+            display: grid; grid-template-columns: 11rem 1fr 7.5rem; gap: 0.75rem; align-items: center;
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+            padding: 0.55rem 0.85rem; font-size: 0.88rem;
+        }
+        .ladder-row .rung { font-family: var(--font-display); font-weight: 600; color: var(--accent); }
+        .ladder-row .speed { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); text-align: right; }
+        .res-list { list-style: none; padding: 0; margin: 0.75rem 0; }
+        .res-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+        .res-list li:last-child { border-bottom: none; }
+        .res-list .what { color: var(--text-secondary); display: block; font-size: 0.86rem; margin-top: 0.15rem; }
+        .res-list a { color: var(--accent); text-decoration: none; }
+        .res-list a:hover { text-decoration: underline; }
+        .qa { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; margin: 0.6rem 0; padding: 0.2rem 1rem; }
+        .qa summary { cursor: pointer; padding: 0.6rem 0; font-weight: 600; }
+        .qa p, .qa ul { margin-bottom: 0.75rem; font-size: 0.92rem; }
+        .sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.4rem 1.25rem; }
+        .chart-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+        .chart-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+        .slide a { color: var(--accent); }
+        @media (max-width: 640px) {
+            .ladder-row { grid-template-columns: 1fr; gap: 0.2rem; }
+            .ladder-row .speed { text-align: left; }
+        }
+        .concepts { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 6px; padding: 0.75rem 1rem; margin-top: 1.25rem; font-size: 0.88rem; }
+        .concepts p { margin: 0 0 0.4rem; color: var(--text-secondary); }
+        .concepts .chips { display: flex; flex-wrap: wrap; gap: 0.35rem 0.5rem; }
+        .concepts .chips a { border: 1px solid var(--border); border-radius: 999px; padding: 0.1rem 0.6rem; text-decoration: none; font-size: 0.82rem; }
+        .concepts .chips a:hover { border-color: var(--accent); }
+        .hero { overflow: hidden; }   /* the 600px glow must not widen the page on phones */
+        .chart-pair > *, .diagram-grid > *, .sim-grid > * { min-width: 0; }   /* let wide code scroll inside its column */
+        .slide p code, .slide li code, .slide td code { overflow-wrap: anywhere; }
+        @media (max-width: 640px) { .diagram-box { white-space: normal; max-width: 100%; } }   /* long boxes must wrap on phones */
+        /* FOptInf: keep long titles clear of the slide number on phones */
+        @media (max-width: 640px) { .slide h2 { padding-right: 3.6rem; } }
+        .sim-grid select, .sim-grid input[type="range"] { max-width: 100%; min-width: 0; }   /* long option labels must not spill into the next column */
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="series-label">Optical Technology for AI Processing &mdash; Presentation 04</div>
+    <h1>The Public <span class="accent">Landscape</span></h1>
+    <p class="subtitle">Who is building optical AI hardware, and what they say about it, in their own words: the companies with peer-reviewed systems, those with products and press releases, those with funding and targets, and the many that have moved towards interconnect. Every company claim is attributed to its public source and labelled as the company's own.</p>
+
+    <div class="tags">
+        <span class="tag">Company claims</span>
+        <span class="tag">Peer-reviewed</span>
+        <span class="tag">Products</span>
+        <span class="tag">Interconnect pivot</span>
+        <span class="tag">Claim checker</span>
+        <span class="tag">Questions to ask</span>
+    </div>
+
+    <div class="pipeline">
+        <span class="pipeline-step">Claim</span>
+        <span class="pipeline-arrow">&rarr;</span>
+        <span class="pipeline-step">Source</span>
+        <span class="pipeline-arrow">&rarr;</span>
+        <span class="pipeline-step">Measured or projected?</span>
+        <span class="pipeline-arrow">&rarr;</span>
+        <span class="pipeline-step">Against what?</span>
+    </div>
+</header>
+
+<section class="slide" id="slide-00">
+    <div class="slide-number">00</div>
+    <h2>Topics We'll Cover</h2>
+    <ul class="contents-list">
+        <li><a href="#slide-01">How to Read a Company's Claim</a></li>
+        <li><a href="#slide-02">Lightmatter</a></li>
+        <li><a href="#slide-03">Lightelligence</a></li>
+        <li><a href="#slide-04">Q.ANT</a></li>
+        <li><a href="#slide-05">Newer Compute Start-ups</a></li>
+        <li><a href="#slide-06">Encryption, Research Labs and Universities</a></li>
+        <li><a href="#slide-07">Interactive: What a Claim Implies</a></li>
+        <li><a href="#slide-08">The Interconnect Companies</a></li>
+        <li><a href="#slide-09">What Has Been Shown, and Where</a></li>
+        <li><a href="#slide-10">The Pull Towards Interconnect</a></li>
+        <li><a href="#slide-11">Questions to Ask</a></li>
+        <li><a href="#slide-12">What to Take Away</a></li>
+    </ul>
+    <div class="concepts">
+        <p><strong>Concepts used here, and where they are explained.</strong> Each links to a glossary entry: this <a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#glossary">series glossary</a>, or the glossaries of Fourier Optics for Inference and Training, Silicon Photonics Fundamentals and other sister series for concepts they already explain.</p>
+        <div class="chips"><a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#g-companyclaim" title="A performance figure stated by a company in a press release, product page or funding announcement. This series quotes, links and labels each one, and asks what operation, precision, power, baseline and workload it rests on.">Company claim</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#g-claimcheck" title="Turning a claimed throughput and power into energy per MAC and comparing it with the conversion floor for an assumed array width and precision: a test of consistency, not truth, that shows what a claim must assume.">Claim checker</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#g-abfp" title="A number format in which a block of values shares an exponent; Lightmatter&#x27;s 2025 processor reports 16-bit ABFP operations computed with analogue photonic cores, reaching near-electronic precision on ResNet and BERT.">Adaptive block floating point (ABFP)</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#g-interconnectpivot" title="Companies that began in optical compute increasingly also sell optical interconnect, which moves bits digitally with no analogue precision to defend; Marvell&#x27;s acquisition of Celestial AI&#x27;s Photonic Fabric is the largest deal listed.">The pull towards interconnect</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#g-evidence" title="From strongest to weakest: a peer-reviewed system running real models; peer-reviewed results on selected tasks; products announced with claims but no published method; funding with targets.">Levels of evidence</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#g-convfloor" title="The energy of the DACs and ADCs around an optical engine, each about Walden FoM × 2ENOB per sample and shared by N MACs. It, not the optics, usually dominates, and it sets the minimum energy any claim must cover.">Conversion floor</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#g-latencyniche" title="Problems where the time for light to cross a chip matters: iterative solvers looping through one matrix (Ising problems at up to 1 GHz and 3 ns per cycle), control and signal processing, and sub-nanosecond classification.">Latency niches</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_Silicon_Photonics/#g-tfln" title="Materials with a linear (Pockels) electro-optic effect, which silicon lacks, bonded or deposited onto a photonic chip: thin-film lithium niobate, barium titanate, polymers, plasmonics. They lower drive voltage or loss, at the price of new process steps.">Thin-film lithium niobate (and other added materials)</a><a href="https://brendanjameslynskey.github.io/Optical_Hub_Data_Centres/#g-opticalio" title="An optical engine inside a processor package, for scale-up and memory traffic, typically with many wavelengths at modest rates per wavelength: Intel&#x27;s prototype runs 64 lanes at 32 Gb/s on 8 wavelengths per fibre; vendors claim about 5 pJ/bit.">Optical I/O chiplet</a><a href="https://brendanjameslynskey.github.io/LLM_Hub_Compute_in_Transit/#g-module" title="A QSFP56 pluggable with an integrated optical Fourier transform device, reported to run FFT, NTT, MAC, and modular and floating-point arithmetic on link traffic at “tens of GFLOPs” (the authors&#x27; claim, evaluated on CKKS bootstrapping; arXiv:2608.21536).">Photonic link module</a></div>
+    </div>
+</section>
+
+<section class="slide" id="slide-01">
+    <div class="slide-number">01</div>
+    <h2>How to Read a Company's Claim</h2>
+    <p>Most of what is public about optical AI companies comes from the companies: press releases, product pages and funding announcements. This deck quotes them, links them, and labels each as <span class="badge warn">company claim</span>. A few companies have also published peer-reviewed papers, labelled <span class="badge ok">peer-reviewed</span>. Nothing here has been independently benchmarked by this series.</p>
+    <div class="table-wrap">
+    <table>
+        <tr><th>Ask</th><th>Why it matters</th></tr>
+        <tr><td>What is an &ldquo;operation&rdquo;?</td><td>A MAC is usually two operations; some figures count optical operations only, or count an analogue transform as many operations (<a href="https://brendanjameslynskey.github.io/OptAI_01_Optical_Computing_Map/#slide-05">OptAI 01, slide 05</a>)</td></tr>
+        <tr><td>At what precision?</td><td>Each bit doubles converter energy and quadruples photons (<a href="https://brendanjameslynskey.github.io/OptAI_02_Optical_Matrix_Multiply/#slide-05">OptAI 02, slide 05</a>)</td></tr>
+        <tr><td>Whose power?</td><td>Optical power only, the optical chip, or the whole system with memory and host</td></tr>
+        <tr><td>Measured or projected?</td><td>&ldquo;Up to&rdquo;, &ldquo;could&rdquo; and roadmap figures are targets</td></tr>
+        <tr><td>Against what baseline?</td><td>Which GPU, at what precision and utilisation, on which workload</td></tr>
+        <tr><td>On which workload?</td><td>A selected problem (an Ising instance, a vision task) is not a general AI workload (<a href="https://brendanjameslynskey.github.io/OptAI_03_Where_Optics_Wins/#slide-11">OptAI 03's scorecard</a>)</td></tr>
+    </table>
+    </div>
+    <p style="font-size:0.85rem;">Coverage is a snapshot as of October 2026, drawn from public sources found by search; companies not listed may simply have published less. Funding figures are included only where a public announcement states them.</p>
+</section>
+
+<section class="slide" id="slide-02">
+    <div class="slide-number">02</div>
+    <h2>Lightmatter</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th>What</th><th>As stated by the source</th><th>Source</th></tr>
+        <tr><td><span class="badge ok">peer-reviewed</span> Photonic processor (2025)</td><td>65.5 trillion adaptive block floating-point (ABFP) 16-bit operations per second at 78 W of electrical power and 1.6 W of optical power; six chips in one package, with four 128 &times; 128 photonic tensor cores on GlobalFoundries 90 nm photonics; ran ResNet, BERT and a deep reinforcement learning algorithm for Atari; &ldquo;near-electronic precision for many workloads&rdquo;</td><td>Ahmed et al., &ldquo;Universal photonic artificial intelligence acceleration&rdquo; (<a href="https://doi.org/10.1038/s41586-025-08854-x">Nature 640, 368, 2025</a>)</td></tr>
+        <tr><td><span class="badge warn">company claim</span> On adoption</td><td>Chief executive Nick Harris said mainstream adoption of the technology is &ldquo;likely a decade&rdquo; away</td><td>Reuters report, April 2025 (<a href="https://tech.yahoo.com/computing/articles/lightmatter-shows-type-computer-chip-150645386.html">via Yahoo</a>)</td></tr>
+        <tr><td><span class="badge warn">company claim</span> Passage M1000 (March 2025), interconnect</td><td>A photonic &ldquo;superchip&rdquo; with 114 Tb/s of total optical bandwidth over 256 fibres at 448 Gb/s each, in a 1.5 kW package, available in summer 2025</td><td><a href="https://lightmatter.co/press-release/lightmatter-unveils-passage-m1000-photonic-superchip-worlds-fastest-ai-interconnect/">Lightmatter press release</a></td></tr>
+        <tr><td><span class="badge warn">company claim</span> Passage L20 (March 2026), interconnect</td><td>A 6.4 Tb/s (each direction) optical engine for near-packaged and on-board optics, sampling in late 2026</td><td><a href="https://lightmatter.co/press-release/lightmatter-expands-photonic-interconnect-roadmap-with-passage-l20-unified-optical-engine-for-npo-and-obo-applications/">Lightmatter press release</a></td></tr>
+    </table>
+    </div>
+    <ul>
+        <li><strong>Reading the paper's figures:</strong> 65.5 trillion operations per second over 79.6 W (electrical plus optical) is about 0.82 TOPS/W, or about 1.2 pJ per operation for the whole system (this deck's arithmetic). The precision is a block floating-point format reached with analogue cores, which is why the paper reports accuracy on real models rather than an ENOB alone.</li>
+        <li>The interactive on <a href="#slide-07">slide 07</a> starts from these figures.</li>
+    </ul>
+</section>
+
+<section class="slide" id="slide-03">
+    <div class="slide-number">03</div>
+    <h2>Lightelligence</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th>What</th><th>As stated by the source</th><th>Source</th></tr>
+        <tr><td><span class="badge ok">peer-reviewed</span> Integrated photonic accelerator (2025)</td><td>More than 16,000 photonic components; matrix MACs at up to 1 GHz with latency &ldquo;as small as 3 ns per cycle&rdquo;; 2.5D hybrid packaging of photonic and electronic chips; demonstrated on heuristic solvers for Ising problems</td><td>Hua et al., &ldquo;An integrated large-scale photonic accelerator with ultralow latency&rdquo; (<a href="https://doi.org/10.1038/s41586-025-08786-6">Nature 640, 361, 2025</a>)</td></tr>
+        <tr><td><span class="badge warn">company claim</span> PACE (December 2021)</td><td>Hundreds of times faster than an NVIDIA RTX 3080 and 25 times faster than the Simulated Bifurcation Machine on a selected Ising problem; the company noted this does not show optical superiority for all applications</td><td>Press release, as reported by <a href="https://www.optica-opn.org/home/industry/2021/december/lightelligence_puts_new_chip_through_its_paces/">Optics &amp; Photonics News</a></td></tr>
+        <tr><td><span class="badge warn">company claim</span> Hummingbird (June 2023), interconnect</td><td>Described as the first optical network-on-chip processor: a 64-core AI processor whose cores communicate over an optical network inside the package, on a PCIe card</td><td>As reported by <a href="https://www.design-reuse.com/news/54344/lightelligence-optical-network-on-chip-processor.html">Design &amp; Reuse</a></td></tr>
+        <tr><td>Listing (April 2026)</td><td>Listed on the Hong Kong Stock Exchange's main board</td><td><a href="https://law.asia/press-release/fangda-lightelligence-list-on-the-main-board-of-the-hkex/">law.asia</a></td></tr>
+    </table>
+    </div>
+    <ul>
+        <li><strong>The pattern:</strong> its peer-reviewed result targets latency on an iterative solver, the niche of <a href="https://brendanjameslynskey.github.io/OptAI_03_Where_Optics_Wins/#slide-08">OptAI 03, slide 08</a>, and it also sells optical interconnect inside the package. Both Nature papers of April 2025 (this and Lightmatter's) appeared in the same issue.</li>
+    </ul>
+</section>
+
+<section class="slide" id="slide-04">
+    <div class="slide-number">04</div>
+    <h2>Q.ANT</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th>What</th><th>As stated by the company</th><th>Source</th></tr>
+        <tr><td><span class="badge warn">company claim</span> Native Processing Unit (November 2024)</td><td>A photonic processor on thin-film lithium niobate, on a PCIe card; &ldquo;at least 30x energy efficiency&rdquo; compared with CMOS</td><td><a href="https://qant.com/wp-content/uploads/2024/11/Q.ANT_E_20241119_Press-Release_NPU-onPCI_FINAL.pdf">Q.ANT press release</a></td></tr>
+        <tr><td><span class="badge warn">company claim</span> NPU 2 (November 2025)</td><td>Up to 30&times; lower energy use and 50&times; higher performance for complex AI and HPC workloads, sold as a server</td><td><a href="https://qant.com/press-releases/q-ant-unveils-its-second-generation-photonic-processor-to-power-the-next-wave-of-ai-and-hpc/">Q.ANT press release</a></td></tr>
+        <tr><td><span class="badge warn">company claim</span> Deployment at LRZ (March 2026)</td><td>Second-generation processors at the Leibniz Supercomputing Centre; projected up to 90&times; lower power per workload</td><td><a href="https://www.lrz.de/en/news/detail/hoehere-leistung-weniger-energie-zweite-generation-photonischer-prozessoren-am-lrz">LRZ news</a></td></tr>
+    </table>
+    </div>
+    <ul>
+        <li><strong>What is not public:</strong> no peer-reviewed paper on the processor was found for this deck, and the releases do not state the baseline, precision or workload behind the 30&times; and 50&times; figures. They are the company's own and are best read as targets until measured independently.</li>
+        <li><strong>Thin-film lithium niobate</strong> gives fast, low-loss phase modulation without free carriers (<a href="https://brendanjameslynskey.github.io/Optical_Hub_Silicon_Photonics/#g-tfln">thin-film lithium niobate</a>), a route to fast weight and input writing.</li>
+    </ul>
+</section>
+
+<section class="slide" id="slide-05">
+    <div class="slide-number">05</div>
+    <h2>Newer Compute Start-ups</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th>Company</th><th>Approach and claim (company's own)</th><th>Source</th></tr>
+        <tr><td>Lumai (Oxford)</td><td>Free-space optical compute. With a funding round of more than $10 million (April 2025): 50&times; the performance of silicon-only accelerators at about a tenth of the power. Iris system (April 2026): described as the first optical computing system to run billion-parameter LLMs in real time, with up to 90% lower energy</td><td><a href="https://lumai.ai/resources/lumai-secures-more-than-10m-investment-2">funding release</a>; <a href="https://lumai.ai/resources/lumai-launches-the-worlds-first-optical-computing-system-for-real-time-billion-parameter-llm-inference">Iris release</a></td></tr>
+        <tr><td>Neurophos (Austin)</td><td>Metamaterial optical processing unit. With a $110 million Series A (January 2026): over one million micron-scale optical processing elements on a chip and up to 100&times; the performance and energy efficiency of current leading chips</td><td><a href="https://dukecapitalpartners.duke.edu/news/neurophos-secures-110-million-series-a-to-launch-exaflop-scale-photonic-ai-chips/">announcement</a></td></tr>
+        <tr><td>Arago (Paris)</td><td>Photonic AI chip &ldquo;JEF&rdquo;. With a $26 million seed round (July 2025): a target of 10&times; lower energy than leading GPUs at equivalent performance and cost</td><td><a href="https://tech.eu/2025/07/08/arago-raises-26m-to-slash-ai-energy-consumption-with-breakthrough-photonic-chip/">Tech.eu</a></td></tr>
+        <tr><td>Akhetonics (Germany)</td><td>Described by the company as the first true all-optical digital processor; &euro;6 million seed (November 2024)</td><td><a href="https://siliconangle.com/2024/11/28/akhetonics-nabs-e6m-build-general-purpose-optical-processor/">SiliconANGLE</a></td></tr>
+    </table>
+    </div>
+    <ul>
+        <li><strong>None of these has a peer-reviewed system paper found for this deck,</strong> and the figures accompany funding or launch announcements. They are targets and positioning, stated by the companies.</li>
+        <li>The interactive on <a href="#slide-07">slide 07</a> shows what any such claim must assume about array size, precision and converters to hold together.</li>
+    </ul>
+</section>
+
+<section class="slide" id="slide-06">
+    <div class="slide-number">06</div>
+    <h2>Encryption, Research Labs and Universities</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th>Who</th><th>What the source states</th><th>Source</th></tr>
+        <tr><td>Optalysys (Leeds) <span class="badge warn">company claim</span></td><td>Photonic acceleration of fully homomorphic encryption rather than AI: optical transforms for FHE, with products including the Enable platform and the LightLocker node; no quantified speed-up was found in its public material</td><td><a href="https://optalysys.com/products">Optalysys products</a>; FHE optics analysed in <a href="https://brendanjameslynskey.github.io/FHESim_04_Optical_NTT_Engines/">FHESim 04</a></td></tr>
+        <tr><td>Microsoft Research <span class="badge ok">peer-reviewed</span></td><td>An analogue optical computer built from micro-LEDs, spatial light modulators and smartphone camera sensors, applied to AI inference and combinatorial optimisation, with case studies in financial transaction settlement and MRI reconstruction</td><td>Kalinin et al., &ldquo;Analog optical computer for AI inference and combinatorial optimization&rdquo; (<a href="https://doi.org/10.1038/s41586-025-09430-z">Nature 645, 354, 2025</a>)</td></tr>
+        <tr><td>Tsinghua University <span class="badge ok">peer-reviewed</span></td><td>ACCEL: 4.6 peta-operations per second, 74.8 peta-operations per second per watt, on vision tasks. Taichi: 160 TOPS/W</td><td><a href="https://doi.org/10.1038/s41586-023-06558-8">Nature 623, 48, 2023</a>; <a href="https://doi.org/10.1126/science.adl1203">Science 384, 202, 2024</a> (<a href="https://brendanjameslynskey.github.io/OptAI_01_Optical_Computing_Map/#slide-05">OptAI 01, slide 05</a>)</td></tr>
+        <tr><td>MIT, Stanford, Cornell and others <span class="badge ok">peer-reviewed</span></td><td>The academic results of <a href="https://brendanjameslynskey.github.io/OptAI_01_Optical_Computing_Map/">OptAI 01</a>: MZI meshes, photoelectric multiplication, in-situ training</td><td>Cited there</td></tr>
+    </table>
+    </div>
+    <ul>
+        <li><strong>Academic figures are the authors' own too,</strong> but peer review means the method and the definition of an operation are on record and can be checked. That is the main difference from a press release.</li>
+    </ul>
+</section>
+
+<section class="slide" id="slide-07">
+    <div class="slide-number">07</div>
+    <h2>Interactive: What a Claim Implies</h2>
+    <p>Enter a claimed throughput and power, and an assumed array size and precision. The checker converts the claim to energy per MAC (two operations per MAC) and compares it with what the converters and the shot-noise laser floor alone would need, using the model of <a href="https://brendanjameslynskey.github.io/OptAI_02_Optical_Matrix_Multiply/#slide-06">OptAI 02</a>. Defaults are the throughput and power of Lightmatter's Nature paper (65.5 TOPS, 78 + 1.6 W) and its 128 &times; 128 cores; <strong>the 8-bit precision and the converter figure of merit are illustrative assumptions</strong>, since the paper's 16-bit format is not an ENOB.</p>
+    <div class="control-panel">
+        <div class="sim-grid">
+            <div class="control-row"><label for="cc-tops">Claimed TOPS (log10)</label><input type="range" id="cc-tops" min="0" max="5" step="0.001" value="1.816"><span class="val" id="cc-tops-val">65.5</span></div>
+            <div class="control-row"><label for="cc-w">Claimed power, W (log10)</label><input type="range" id="cc-w" min="-1" max="4" step="0.001" value="1.901"><span class="val" id="cc-w-val">79.6</span></div>
+            <div class="control-row"><label for="cc-e">Assumed ENOB</label><input type="range" id="cc-e" min="2" max="14" step="1" value="8"><span class="val" id="cc-e-val">8</span></div>
+            <div class="control-row"><label for="cc-n">Array width N (log2)</label><input type="range" id="cc-n" min="3" max="12" step="1" value="7"><span class="val" id="cc-n-val">128</span></div>
+            <div class="control-row"><label for="cc-fadc">ADC FoM (fJ/step)</label><input type="range" id="cc-fadc" min="1" max="100" step="1" value="20"><span class="val" id="cc-fadc-val">20</span></div>
+        </div>
+        <div class="metric-grid">
+            <div class="metric"><div class="metric-label">Claim, per MAC</div><div class="metric-value" id="cc-claim">&mdash;</div></div>
+            <div class="metric"><div class="metric-label">Claim, TOPS/W</div><div class="metric-value" id="cc-tw">&mdash;</div></div>
+            <div class="metric"><div class="metric-label">Conversion floor</div><div class="metric-value" id="cc-floor">&mdash;</div></div>
+            <div class="metric"><div class="metric-label">Floor at claimed rate</div><div class="metric-value" id="cc-floorw">&mdash;</div></div>
+            <div class="metric"><div class="metric-label">N where floor fits claim</div><div class="metric-value" id="cc-need">&mdash;</div></div>
+        </div>
+        <p id="cc-note" style="font-size:0.85rem; margin-top:0.6rem;"></p>
+    </div>
+    <p style="font-size:0.85rem;">Try a claim of 100&times; better than a GPU: a GPU at about 0.7 pJ per MAC (<a href="https://brendanjameslynskey.github.io/OptAI_02_Optical_Matrix_Multiply/#slide-11">OptAI 02, slide 11</a>) becomes 7 fJ per MAC, and see what array width and precision it demands. Limits: converters and the photon floor only; the DAC is taken at half the ADC's figure of merit, laser efficiency 10% and 3 dB of loss.</p>
+        <style>@media (max-width: 640px) { .sim-grid .control-row label { min-width: 0; flex-basis: 100%; } .sim-grid .control-row input[type="range"] { min-width: 0; } }</style>
+    <script>
+    (function(){
+        // Energy per multiply-accumulate of an optical matrix-vector engine (all energies in pJ per MAC)
+        const OM = (function () {
+            const H = 6.62607015e-34, C = 299792458;
+            // p: N (matrix size), E (ENOB), fdac, fadc (Walden FoM, fJ per conversion step), wpe (0..1), loss (dB),
+            //    lam (µm), B (vectors per weight load; Infinity = static weights), ps (static power per weight cell, mW), f (vector rate, GHz)
+            function energy(p) {
+                const steps = Math.pow(2, p.E);
+                const dac = p.fdac * 1e-3 * steps / p.N;                         // one input conversion per N MACs
+                const adc = p.fadc * 1e-3 * steps / p.N;                         // one output conversion per N MACs
+                const wload = isFinite(p.B) ? p.fdac * 1e-3 * steps / p.B : 0;   // each weight rewritten once per B vectors
+                const photons = 3 * Math.pow(4, p.E);                            // shot-noise floor: 1/sqrt(n) at the quantisation noise of E bits
+                const ephot = H * C / (p.lam * 1e-6);
+                const laser = photons * ephot * Math.pow(10, p.loss / 10) / p.wpe / p.N * 1e12;
+                const stat = p.ps * 1e-3 / (p.f * 1e9) * 1e12;                  // each weight cell used once per vector
+                const total = dac + adc + wload + laser + stat;
+                return { dac, adc, wload, laser, stat, total, photons };
+            }
+            return { energy };
+        })();
+        const $ = id => document.getElementById(id);
+        const g = id => +$(id).value;
+        const ids = ['cc-tops', 'cc-w', 'cc-e', 'cc-n', 'cc-fadc'];
+        function rec() {
+            const tops = Math.pow(10, g('cc-tops')), W = Math.pow(10, g('cc-w')), E = g('cc-e'), N = Math.round(Math.pow(2, g('cc-n'))), fadc = g('cc-fadc');
+            $('cc-tops-val').textContent = tops >= 100 ? tops.toFixed(0) : tops.toFixed(1); $('cc-w-val').textContent = W >= 100 ? W.toFixed(0) : W.toFixed(1);
+            $('cc-e-val').textContent = E; $('cc-n-val').textContent = N; $('cc-fadc-val').textContent = fadc;
+            const macs = tops * 1e12 / 2;                                   // two operations per multiply-accumulate
+            const claimed = W / macs * 1e12;                                // pJ per MAC
+            const conv = OM.energy({ N, E, fdac: fadc / 2, fadc, wpe: 0.1, loss: 3, lam: 1.55, B: Infinity, ps: 0, f: 1 });
+            const floor = conv.dac + conv.adc + conv.laser;                 // pJ per MAC: converters plus the shot-noise laser floor
+            const floorW = floor * 1e-12 * macs;
+            $('cc-claim').textContent = claimed >= 1 ? claimed.toFixed(2) + ' pJ/MAC' : (claimed * 1e3).toFixed(1) + ' fJ/MAC';
+            $('cc-tw').textContent = (tops / W).toFixed(tops / W >= 10 ? 0 : 2) + ' TOPS/W';
+            $('cc-floor').textContent = floor >= 1 ? floor.toFixed(2) + ' pJ/MAC' : (floor * 1e3).toFixed(1) + ' fJ/MAC';
+            $('cc-floorw').textContent = floorW >= 1 ? floorW.toFixed(1) + ' W' : (floorW * 1e3).toFixed(0) + ' mW';
+            let nNeed = null; for (let k = 3; k <= 16; k += 0.25) { const n = Math.pow(2, k), e = OM.energy({ N: n, E, fdac: fadc / 2, fadc, wpe: 0.1, loss: 3, lam: 1.55, B: Infinity, ps: 0, f: 1 }); if (e.dac + e.adc + e.laser <= claimed) { nNeed = Math.round(n); break; } }
+            $('cc-need').textContent = nNeed ? nNeed.toLocaleString('en-GB') : '> 65,536';
+            const share = floorW / W;
+            $('cc-note').innerHTML = 'The claim works out at ' + $('cc-claim').textContent + ' (counting a MAC as two operations). At ' + E + ' bits with a ' + N + '-wide array, conversions and the shot-noise laser floor alone need ' + $('cc-floor').textContent + ', ' +
+                (share <= 1 ? (100 * share).toFixed(0) + '% of the claimed power, leaving ' + (100 * (1 - share)).toFixed(0) + '% for lasers above the floor, tuning, digital logic, memory and I/O.' :
+                 '<strong>' + share.toFixed(1) + '× the claimed power</strong>: the claim needs a larger array (about ' + $('cc-need').textContent + ' wide), fewer bits, better converters, or a definition of &ldquo;operation&rdquo; other than the one assumed here.') +
+                ' This tests consistency, not truth: it shows what a claim must assume, and what to ask.';
+            window.ccState = { claimed, floor, share, nNeed };
+        }
+        ids.forEach(id => $(id).addEventListener('input', rec));
+        window.ccDemo = { set(o) { for (const [k, v] of Object.entries(o)) $(k).value = v; rec(); return window.ccState; } };
+        rec();
+    })();
+    </script>
+</section>
+
+<section class="slide" id="slide-08">
+    <div class="slide-number">08</div>
+    <h2>The Interconnect Companies</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th>Company</th><th>What the source states</th><th>Source</th></tr>
+        <tr><td>Celestial AI, now Marvell</td><td>Marvell announced in December 2025 that it would acquire Celestial AI, whose &ldquo;Photonic Fabric&rdquo; links compute and memory optically, for about $3.25 billion up front and up to about $5.5 billion in total; the acquisition completed in February 2026</td><td><a href="https://www.nasdaq.com/press-release/marvell-acquire-celestial-ai-accelerating-scale-connectivity-next-generation-data">announcement</a>; <a href="https://www.marvell.com/company/newsroom/marvell-completes-acquisition-of-celestial-ai.html">completion</a></td></tr>
+        <tr><td>Ayar Labs</td><td>Optical I/O chiplets; described its 8 Tb/s TeraPHY as the first UCIe optical chiplet (March 2025)</td><td><a href="https://www.businesswire.com/news/home/20250331044779/en/">press release</a>; <a href="https://brendanjameslynskey.github.io/OptDC_02_Co_Packaged_Optics/#slide-06">OptDC 02, slide 06</a></td></tr>
+        <tr><td>Lightmatter Passage; Lightelligence Hummingbird</td><td>Interconnect lines of two companies that began with optical compute</td><td><a href="#slide-02">slides 02</a> and <a href="#slide-03">03</a></td></tr>
+        <tr><td>iPronics</td><td>From programmable photonics to a silicon-photonic optical circuit switch, ONE-32 (2025), with reconfiguration under 300 &micro;s and up to 50% lower switch power, by the company's account</td><td>As reported by <a href="https://convergedigest.com/ipronics-launches-silicon-photonics-based-optical-circuit-switch/">Converge Digest</a>; OCS in <a href="https://brendanjameslynskey.github.io/OptDC_03_Optical_Circuit_Switching/">OptDC 03</a></td></tr>
+        <tr><td>Salience Labs</td><td>An all-optical 32-port switch (March 2026), described by the company as the industry's highest-performing</td><td><a href="https://www.businesswire.com/news/home/20260310560559/en">press release</a></td></tr>
+    </table>
+    </div>
+    <p>These are interconnect, not compute: the devices and economics are those of <a href="https://brendanjameslynskey.github.io/Optical_Hub_Data_Centres/">Optical Technology for Data Centres</a>. They belong here because several of them began in optical computing.</p>
+</section>
+
+<section class="slide" id="slide-09">
+    <div class="slide-number">09</div>
+    <h2>What Has Been Shown, and Where</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th>Evidence</th><th>Who</th></tr>
+        <tr><td>Peer-reviewed system running real AI models</td><td>Lightmatter (ResNet, BERT, Atari reinforcement learning; Nature 2025)</td></tr>
+        <tr><td>Peer-reviewed system on solvers or selected tasks</td><td>Lightelligence (Ising; Nature 2025); Microsoft Research (inference and optimisation; Nature 2025); Tsinghua (vision; Nature 2023, Science 2024)</td></tr>
+        <tr><td>Product announced with performance claims, no paper found</td><td>Q.ANT, Lumai</td></tr>
+        <tr><td>Funding with targets</td><td>Neurophos, Arago, Akhetonics</td></tr>
+        <tr><td>Interconnect products and deals</td><td>Lightmatter Passage, Celestial AI (Marvell), Ayar Labs, iPronics, Salience Labs</td></tr>
+    </table>
+    </div>
+    <ul>
+        <li><strong>The strongest published compute result</strong>, Lightmatter's, works out at about 1.2 pJ per operation for the whole system (<a href="#slide-02">slide 02</a>): real models at useful precision, but not yet below a modern GPU's board-level energy per operation. Its chief executive's &ldquo;likely a decade&rdquo; is consistent with that.</li>
+        <li><strong>Large-factor claims (30&times;, 50&times;, 100&times;)</strong> come from announcements without published methods; the interactive shows they require large arrays, low precision and very little energy outside the converters.</li>
+    </ul>
+</section>
+
+<section class="slide" id="slide-10">
+    <div class="slide-number">10</div>
+    <h2>The Pull Towards Interconnect</h2>
+    <ul>
+        <li><strong>A visible pattern:</strong> of the companies here that began with optical compute, Lightmatter and Lightelligence now also sell interconnect, and the largest transaction in this list, Marvell's acquisition of Celestial AI, is for optical interconnect (<a href="#slide-08">slide 08</a>). Luminous Computing, a photonics start-up that raised $105 million in 2022 to build what it called the world's most powerful AI supercomputer (<a href="https://www.businesswire.com/news/home/20220303005033/en/Luminous-Computing-Raises-$105M-in-Series-A-Round-to-Build-Worlds-Most-Powerful-AI-Supercomputer">press release</a>), has made no public announcements since.</li>
+        <li><strong>Why, on the arguments of this series:</strong> interconnect moves bits digitally, with no analogue precision to defend, no weights to store, and a clear energy target set by copper and pluggables (<a href="https://brendanjameslynskey.github.io/OptDC_02_Co_Packaged_Optics/">OptDC 02</a>). Optical compute must beat a digital MAC whose energy falls every process generation, while paying for conversions, static power and memory (<a href="https://brendanjameslynskey.github.io/OptAI_03_Where_Optics_Wins/">OptAI 03</a>).</li>
+        <li><strong>This is an observation, not a forecast.</strong> Compute companies continue to publish and ship, and the peer-reviewed results of 2025 are the most capable optical processors yet shown.</li>
+    </ul>
+</section>
+
+<section class="slide" id="slide-11">
+    <div class="slide-number">11</div>
+    <h2>Questions to Ask</h2>
+    <ol>
+        <li><strong>What workload,</strong> at what batch size, and is it a full model or a selected kernel?</li>
+        <li><strong>What precision</strong> at the output, and what accuracy against the digital reference on the same model?</li>
+        <li><strong>What does the power figure include:</strong> optical power, the photonic chip, converters, lasers, memory, host?</li>
+        <li><strong>How many conversions per MAC:</strong> how large is the array, and how often are weights reloaded?</li>
+        <li><strong>How much static power</strong> holds the weights and the calibration, and how well is the engine utilised?</li>
+        <li><strong>Where do the weights live</strong>, and what does fetching them cost?</li>
+        <li><strong>Measured or projected,</strong> and against which digital baseline, at which process node?</li>
+        <li><strong>Is it peer-reviewed</strong>, or independently benchmarked?</li>
+    </ol>
+    <p>Each question maps to a term in the models of <a href="https://brendanjameslynskey.github.io/OptAI_02_Optical_Matrix_Multiply/#slide-06">OptAI 02</a> and <a href="https://brendanjameslynskey.github.io/OptAI_03_Where_Optics_Wins/#slide-03">OptAI 03</a>, and to the interactive on <a href="#slide-07">slide 07</a>.</p>
+</section>
+
+<section class="slide" id="slide-12">
+    <div class="slide-number">12</div>
+    <h2>What to Take Away</h2>
+    <ul>
+        <li><strong>Peer-reviewed optical AI systems now exist:</strong> Lightmatter's runs ResNet and BERT at near-electronic precision (65.5 trillion operations per second at 78 W plus 1.6 W optical); Lightelligence's solves Ising problems at up to 1 GHz; Microsoft's and Tsinghua's target inference, optimisation and vision.</li>
+        <li><strong>Most large-factor claims</strong> (Q.ANT's 30&ndash;50&times;, Lumai's 50&times;, Neurophos's 100&times;) are the companies' own, stated in announcements without published methods.</li>
+        <li><strong>Several optical-compute companies have moved towards interconnect,</strong> where the engineering case is clearer; Marvell's acquisition of Celestial AI is the largest deal listed.</li>
+        <li><strong>Read every claim with the questions of slide 11,</strong> and check it against the conversion floor (the interactive).</li>
+        <li><strong>The series in one line:</strong> optics computes linear algebra almost for free, and pays for it in conversions, precision, static power and memory; it wins where those are small against the work done.</li>
+    </ul>
+</section>
+
+<!-- ════════════════════════════════════ Footer ════════════════════════════════════ -->
+<footer class="footer">
+    <p>Part of the <a href="https://github.com/BrendanJamesLynskey/Optical_Hub_AI_Processing">Optical Technology for AI Processing series</a> &middot; <a href="https://brendanjameslynskey.github.io/Optical_Hub_AI_Processing/#glossary">glossary: every concept and where it is explained</a> &middot; numbers: cited on each slide or computed live in the interactive</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;"><a href="https://brendanjameslynskey.github.io/OptAI_03_Where_Optics_Wins/">&larr; 03 Where Optics Could Win, and the Limits</a></p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Sister series: <a href="https://brendanjameslynskey.github.io/LLM_Hub_Fourier_Optics_Inference/">Fourier Optics for Inference</a> &middot; <a href="https://brendanjameslynskey.github.io/LLM_Hub_Fourier_Optics_Training/">Fourier Optics for Training</a> &middot; <a href="https://brendanjameslynskey.github.io/Optical_Hub_Silicon_Photonics/">Silicon Photonics Fundamentals</a> &middot; <a href="https://brendanjameslynskey.github.io/Optical_Hub_Data_Centres/">Optical Technology for Data Centres</a> &middot; <a href="https://brendanjameslynskey.github.io/LLM_Hub_Compute_in_Transit/">Compute in Transit</a></p>
+</footer>
+
+<script>
+    // Smooth scroll for TOC links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Subtle fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.slide').forEach(slide => {
+        slide.style.opacity = '0';
+        slide.style.transform = 'translateY(30px)';
+        slide.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(slide);
+    });
+</script>
+
+</body>
+</html>
